@@ -31,7 +31,7 @@ export default async function LeadDetailPage({
 
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, full_name')
+    .select('id, full_name, role, created_at')
     .order('full_name')
 
   const trip = (lead as any).trip
@@ -119,11 +119,10 @@ export default async function LeadDetailPage({
                   <p className="text-ink/50 text-sm mt-0.5">{trip.destination}</p>
                 </div>
                 <span
-                  className={`text-xs px-2.5 py-1 rounded-full font-medium ${
-                    trip.status === 'open'
-                      ? 'bg-green-100 text-green-700'
-                      : 'bg-gray-100 text-gray-500'
-                  }`}
+                  className={`text-xs px-2.5 py-1 rounded-full font-medium ${trip.status === 'open'
+                    ? 'bg-green-100 text-green-700'
+                    : 'bg-gray-100 text-gray-500'
+                    }`}
                 >
                   {trip.status}
                 </span>
