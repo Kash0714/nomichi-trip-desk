@@ -43,7 +43,7 @@ export default async function LeadsPage({
 
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, full_name')
+    .select('id, full_name, role, created_at')
     .order('full_name')
 
   return (
@@ -115,9 +115,8 @@ export default async function LeadsPage({
                   </td>
                   <td className="px-5 py-4">
                     <span
-                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
-                        STATUS_COLORS[lead.status as LeadStatus]
-                      }`}
+                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${STATUS_COLORS[lead.status as LeadStatus]
+                        }`}
                     >
                       {STATUS_LABELS[lead.status as LeadStatus]}
                     </span>
