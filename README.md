@@ -2,7 +2,7 @@
 
 A mini-CRM and public enquiry tool for the Nomichi team. Built with Next.js 14 (App Router), Supabase, and Tailwind.
 
-**Live URL:** [your-vercel-url.vercel.app]  
+**Live URL:** https://nomichi-trip-desk-xnh5-qp9alqvp7-kash0714s-projects.vercel.app/
 **Admin login:** Create an account at `/login` using "Create account." No invite required.
 
 ---
@@ -30,7 +30,7 @@ Three connected pieces:
 - **Next.js 14** (App Router, TypeScript)
 - **Supabase** (Postgres, Auth, Row-Level Security)
 - **Tailwind CSS** with Nomichi brand tokens
-- **Anthropic claude-sonnet-4-6** for the vibe-check feature (server-side only)
+- **Groq llama** for the vibe-check feature (server-side only)
 - **Vercel** for deployment
 
 ---
@@ -39,7 +39,7 @@ Three connected pieces:
 
 **1. Clone and install**
 ```bash
-git clone https://github.com/your-username/nomichi-trip-desk
+git clone https://github.com/kashik0714/nomichi-trip-desk
 cd nomichi-trip-desk
 npm install
 ```
@@ -59,7 +59,7 @@ cp .env.example .env.local
 Fill in:
 - `NEXT_PUBLIC_SUPABASE_URL` — from Supabase project Settings > API
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — from the same page
-- `ANTHROPIC_API_KEY` — from console.anthropic.com (never prefix this with NEXT_PUBLIC_)
+- `GROQ_API_KEY` — from console.groq.com (never prefix this with NEXT_PUBLIC_)
 
 **4. Run**
 ```bash
@@ -101,7 +101,6 @@ Setting a trip to `closed` in admin immediately removes it from the public enqui
 
 - **Supabase Realtime on the lead list** — so a new enquiry lights up in the admin panel without a refresh, instead of the current "leads appear on page load."
 - **Row-level security by owner** — the `role` column is already there; wiring up RLS so associates only see their assigned leads is a small policy change.
-- **CSV export** — a single server route that runs the same filtered query as the lead list and streams a CSV back.
 - **WhatsApp message drafter** — the second AI feature from the brief. Given the trip details and the traveller's vibe text, draft a warm, short first message in Nomichi's voice.
 - **Activity timeline** — a unified per-lead log showing status changes, owner changes, and touchpoints in chronological order, rather than touchpoints alone.
 
